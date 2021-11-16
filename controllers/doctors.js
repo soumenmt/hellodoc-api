@@ -38,7 +38,10 @@ exports.getDoctors = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.findDoctorById = async (req, res, next) => {
   try {
-    const doctor = await Doctor.findById(req.params.id);
+    const doctor = await Doctor.findById(req.params.id).populate({
+      path: "doctorOffices",
+      select: "office_name street_address city",
+    });
     if (!doctor) {
       return next(
         new ErrorResponse(`Doctor not found with id of ${req.params.id}`, 404)

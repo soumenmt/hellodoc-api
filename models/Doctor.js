@@ -50,4 +50,14 @@ const DoctorSchema = new mongoose.Schema({
   },
 });
 
+DoctorSchema.virtual("doctorOffices", {
+  ref: "Doctor_Office", //The Model to use
+  localField: "_id", //Find in Model, where localField
+  foreignField: "doctor", // is equal to foreignField
+});
+
+// Set Object and Json property to true. Default is set to false
+DoctorSchema.set("toObject", { virtuals: true });
+DoctorSchema.set("toJSON", { virtuals: true });
+
 module.exports = mongoose.model("Doctor", DoctorSchema);

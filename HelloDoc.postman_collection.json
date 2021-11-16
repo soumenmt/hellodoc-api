@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "d452dbeb-858f-44a2-9403-b9643d35180c",
+		"name": "HelloDoc",
+		"description": "it is collection for HelloDoc App...",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "doctors",
+			"item": [
+				{
+					"name": "getAllDoctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctors/1237889",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctors",
+								"1237889"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOneDoctorById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctors/1239877878",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctors",
+								"1239877878"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDoctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"Jon3\",\r\n    \"lastname\":\"Smith3\",\r\n    \"about\":\"Testing\",\r\n    \"address\":\"Testing\",\r\n    \"qualification\":\"MD\",\r\n    \"specialities\":\"Other\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/doctors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctors/12398989899",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctors",
+								"12398989899"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patients",
+			"item": [
+				{
+					"name": "getAllPatients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/patients",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPatientById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/patients/618a974349f8ff16c13e29c3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"patients",
+								"618a974349f8ff16c13e29c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOnePatientById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/patients/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"patients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePatientById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/patients/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"patients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPatient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/patients",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "doctoroffice",
+			"item": [
+				{
+					"name": "getAllDoctorOffices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoroffices",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoroffices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorOfficeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoroffices/618aa64168f93fe5900ffb95",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoroffices",
+								"618aa64168f93fe5900ffb95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOneDoctorOfficeById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"office_name\": \"Smile House\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoroffices/618aa64168f93fe5900ffb95",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoroffices",
+								"618aa64168f93fe5900ffb95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDoctorOffice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor_id\": \"618a88d4331012c41ee5d1ed\",\r\n    \"office_name\": \" Dental Clinic\",\r\n    \"street_address\": \"546 LIC More\",\r\n    \"city\": \"Panskura\",\r\n    \"state\": \"WB\",\r\n    \"zipcode\": \"721134\",\r\n    \"country\": \"INDIA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoroffices",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoroffices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorOfficeById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoroffices/618aa64168f93fe5900ffb95",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoroffices",
+								"618aa64168f93fe5900ffb95"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "doctoravail",
+			"item": [
+				{
+					"name": "getDoctorAllAvailiabilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoravailiabilities",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoravailiabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDoctorAvailById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoravailiabilities/618ac44639adfa32429d9a90",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoravailiabilities",
+								"618ac44639adfa32429d9a90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOneDoctorAvailById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"day_of_week\": \"2\",\r\n        \"start_time\": 14,\r\n        \"end_time\": 17\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoravailiabilities/618ac44639adfa32429d9a90",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoravailiabilities",
+								"618ac44639adfa32429d9a90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDoctorAvail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor_office_id\": \"618aa55b68f93fe5900ffb8d\",\r\n    \"avaliable_date\": \"2021-05-19\",\r\n    \"day_of_week\": \"1\",\r\n    \"start_time\": 9,\r\n    \"end_time\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoravailiabilities",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoravailiabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorAvailById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/doctoravailiabilities/618ac44639adfa32429d9a90",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"doctoravailiabilities",
+								"618ac44639adfa32429d9a90"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patientappointment",
+			"item": [
+				{
+					"name": "getAllAppointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAppointmentById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/appointments/618ad857978a79694cf724d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments",
+								"618ad857978a79694cf724d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAppointById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appointment_date\": \"2021-05-30T00:00:00.000Z\",\r\n        \"start_time\": 10,\r\n        \"end_time\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/appointments/618ad857978a79694cf724d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments",
+								"618ad857978a79694cf724d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAppointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"doctor_office_id\":\"618aa55b68f93fe5900ffb8d\" ,\r\n    \"patient_id\": \"618a976049f8ff16c13e29c5\",\r\n    \"appointment_date\":\"2021-05-19\" ,\r\n    \"start_time\": 10,\r\n    \"end_time\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAppointmentById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/appointments/618ad857978a79694cf724d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments",
+								"618ad857978a79694cf724d6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

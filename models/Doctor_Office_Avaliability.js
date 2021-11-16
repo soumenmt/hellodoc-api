@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const Doctor_Office_Availiability_Schema = new mongoose.Schema({
-  doctor_office_id: {
-    type: String,
+  doctoroffice: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Doctor_Office",
   },
   avaliable_date: {
     type: Date,
@@ -17,6 +18,16 @@ const Doctor_Office_Availiability_Schema = new mongoose.Schema({
     type: Number,
   },
 });
+
+Doctor_Office_Availiability_Schema.virtual("availSlots", {
+  ref: "Slots", //The Model to use
+  localField: "_id", //Find in Model, where localField
+  foreignField: "doctorofficeavailiability", // is equal to foreignField
+});
+
+// Set Object and Json property to true. Default is set to false
+Doctor_Office_Availiability_Schema.set("toObject", { virtuals: true });
+Doctor_Office_Availiability_Schema.set("toJSON", { virtuals: true });
 
 module.exports = mongoose.model(
   "Doctor_Office_Availiability",

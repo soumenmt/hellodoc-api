@@ -23,7 +23,10 @@ exports.getDoctorOffices = async (req, res, next) => {
 // @access    Public
 exports.findDoctorOfficeById = async (req, res, next) => {
   try {
-    const doctoroffice = await Doctor_Office.findById(req.params.id);
+    const doctoroffice = await Doctor_Office.findById(req.params.id).populate({
+      path: "officeAvail",
+      select: "avaliable_date day_of_week start_time end_time",
+    });
     if (!doctoroffice) {
       return next(
         new ErrorResponse(
@@ -69,8 +72,9 @@ exports.updateOneDoctorOfficeById = async (req, res, next) => {
 // @route     POST /api/v1/doctoroffices
 // @access    Public
 exports.createDoctorOffice = async (req, res, next) => {
+  console.log(req.body);
   var newdoctoroffice = new Doctor_Office({
-    doctor_id: req.body.doctor_id,
+    doctor: req.body.doctor,
     office_name: req.body.office_name,
     street_address: req.body.street_address,
     city: req.body.city,

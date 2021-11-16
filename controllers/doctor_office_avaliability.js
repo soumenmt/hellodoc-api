@@ -6,7 +6,11 @@ const ErrorResponse = require("../utils/errorResponse");
 // @access    Public
 exports.getDoctorAvailiabilities = async (req, res, next) => {
   try {
-    const doctoravailiabilities = await Doctor_Office_Availiability.find();
+    const doctoravailiabilities =
+      await Doctor_Office_Availiability.find().populate({
+        path: "availSlots",
+        select: "slottime slotstatus",
+      });
     res.status(200).json({
       success: true,
       count: doctoravailiabilities.length,
@@ -25,7 +29,10 @@ exports.findDoctorAvailById = async (req, res, next) => {
   try {
     const doctoravail = await Doctor_Office_Availiability.findById(
       req.params.id
-    );
+    ).populate({
+      path: "availSlots",
+      select: "slottime slotstatus",
+    });
     if (!doctoravail) {
       return next(
         new ErrorResponse(
@@ -71,9 +78,8 @@ exports.updateOneDoctorAvailById = async (req, res, next) => {
 // @route     POST /api/v1/doctoravailiabilities
 // @access    Public
 exports.createDoctorAvail = async (req, res, next) => {
-  console.log(req.body);
   var newdoctoravail = new Doctor_Office_Availiability({
-    doctor_office_id: req.body.doctor_office_id,
+    doctoroffice: req.body.doctoroffice,
     avaliable_date: req.body.avaliable_date,
     day_of_week: req.body.day_of_week,
     start_time: req.body.start_time,
