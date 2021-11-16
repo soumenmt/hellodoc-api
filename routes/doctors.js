@@ -11,7 +11,10 @@ const Doctor = require("../models/Doctor");
 const router = express.Router();
 const advancedResults = require("../middleware/advancedResults");
 
-router.route("/").get(advancedResults(Doctor), getDoctors).post(createDoctor);
+router
+  .route("/")
+  .get(advancedResults(Doctor, "doctorOffices"), getDoctors)
+  .post(createDoctor);
 
 router
   .route("/:id")

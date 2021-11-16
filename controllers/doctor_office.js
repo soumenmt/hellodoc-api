@@ -1,32 +1,22 @@
 const Doctor_Office = require("../models/Doctor_Office");
 const ErrorResponse = require("../utils/errorResponse");
+const asyncHandler = require("../middleware/async");
 
 // @desc      Get all Doctor_Offices
 // @route     GET /api/v1/doctoroffices
 // @access    Public
-exports.getDoctorOffices = async (req, res, next) => {
-  try {
-    const doctoroffices = await Doctor_Office.find();
-    res.status(200).json({
-      success: true,
-      count: doctoroffices.length,
-      data: doctoroffices,
-    });
-  } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
-  }
-};
+exports.getDoctorOffices = asyncHandler(async (req, res, next) => {
+  res.status(200).json(res.advancedResults);
+});
+
 // @desc      Get doctoroffice profile based on their id
 // @route     GET /api/v1/doctoroffices/:id
 // @access    Public
 exports.findDoctorOfficeById = async (req, res, next) => {
   try {
-    const doctoroffice = await Doctor_Office.findById(req.params.id).populate({
-      path: "officeAvail",
-      select: "avaliable_date day_of_week start_time end_time",
-    });
+    const doctoroffice = await Doctor_Office.findById(req.params.id).populate(
+      "officeAvail"
+    );
     if (!doctoroffice) {
       return next(
         new ErrorResponse(

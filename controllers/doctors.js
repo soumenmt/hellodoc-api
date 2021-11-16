@@ -6,31 +6,7 @@ const asyncHandler = require("../middleware/async");
 // @route     GET /api/v1/doctors
 // @access    Public
 exports.getDoctors = asyncHandler(async (req, res, next) => {
-  // const reqQuery = { ...req.query };
-  // console.log(" before exclude reqQuery", reqQuery);
-  // //Fields to exclude
-  // const removeFields = ["select"];
-  // // loop over removeFields array and delete them from reqQuery
-  // removeFields.forEach((param) => delete reqQuery[param]);
-  // console.log(" after exclude reqQuery", reqQuery);
-  // console.log(req.query.select);
-  // let fields = "";
-  // if (req.query.select) {
-  //   console.log("inside select");
-  //   fields = req.query.select.split(",").join(" ");
-  //   console.log(" inside fields", fields);
-  // }
-  //try {
-  // console.log(" outside fields", fields);
-
-  // const doctors = await Doctor.find().select(fields).sort("firstname");
   res.status(200).json(res.advancedResults);
-  //}
-  // catch (err) {
-  //   res.status(400).json({
-  //     success: false,
-  //   });
-  // }
 });
 
 // @desc      Get doctor profile based on their id
@@ -38,10 +14,9 @@ exports.getDoctors = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.findDoctorById = async (req, res, next) => {
   try {
-    const doctor = await Doctor.findById(req.params.id).populate({
-      path: "doctorOffices",
-      select: "office_name street_address city",
-    });
+    const doctor = await Doctor.findById(req.params.id).populate(
+      "doctorOffices"
+    );
     if (!doctor) {
       return next(
         new ErrorResponse(`Doctor not found with id of ${req.params.id}`, 404)

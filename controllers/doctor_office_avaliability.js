@@ -1,27 +1,13 @@
 const Doctor_Office_Availiability = require("../models/Doctor_Office_Avaliability");
 const ErrorResponse = require("../utils/errorResponse");
+const asyncHandler = require("../middleware/async");
 
 // @desc      Get all doctor availiabilities
 // @route     GET /api/v1/doctoravailiabilities
 // @access    Public
-exports.getDoctorAvailiabilities = async (req, res, next) => {
-  try {
-    const doctoravailiabilities =
-      await Doctor_Office_Availiability.find().populate({
-        path: "availSlots",
-        select: "slottime slotstatus",
-      });
-    res.status(200).json({
-      success: true,
-      count: doctoravailiabilities.length,
-      data: doctoravailiabilities,
-    });
-  } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
-  }
-};
+exports.getDoctorAvailiabilities = asyncHandler(async (req, res, next) => {
+  res.status(200).json(res.advancedResults);
+});
 // @desc      Get doctor availiabilities based on their id
 // @route     GET /api/v1/doctoravailiabilities/:id
 // @access    Public
@@ -29,10 +15,7 @@ exports.findDoctorAvailById = async (req, res, next) => {
   try {
     const doctoravail = await Doctor_Office_Availiability.findById(
       req.params.id
-    ).populate({
-      path: "availSlots",
-      select: "slottime slotstatus",
-    });
+    ).populate("availSlots");
     if (!doctoravail) {
       return next(
         new ErrorResponse(

@@ -18,7 +18,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
     /\b(gt|gte|lt|lte|in)\b/g,
     (match) => `$${match}`
   );
-
+  //console.log("queryStr", queryStr);
   // Finding resource
   query = model.find(JSON.parse(queryStr));
 

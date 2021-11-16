@@ -6,10 +6,15 @@ const {
   createDoctorOffice,
   deleteDoctorOfficeById,
 } = require("../controllers/doctor_office");
+const Doctor_Office = require("../models/Doctor_Office");
+const advancedResults = require("../middleware/advancedResults");
 
 const router = express.Router();
 
-router.route("/").get(getDoctorOffices).post(createDoctorOffice);
+router
+  .route("/")
+  .get(advancedResults(Doctor_Office, "officeAvail"), getDoctorOffices)
+  .post(createDoctorOffice);
 
 router
   .route("/:id")
