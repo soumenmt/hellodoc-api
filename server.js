@@ -33,6 +33,7 @@ const doctoroffices = require("./routes/doctor_office");
 const doctoravailiabilities = require("./routes/doctor_office_avaliability");
 const appointments = require("./routes/appointment");
 const slots = require("./routes/slots");
+const patientappointment = require("./routes/createpatientappointment");
 
 const app = express();
 
@@ -73,6 +74,7 @@ app.use("/api/v1/doctoroffices", doctoroffices);
 app.use("/api/v1/doctoravailiabilities", doctoravailiabilities);
 app.use("/api/v1/appointments", appointments);
 app.use("/api/v1/slots", slots);
+app.use("/api/v1/patientappointment", patientappointment);
 
 app.use(errorHandler);
 

@@ -61,8 +61,7 @@ exports.updateOnePatientById = async (req, res, next) => {
 // @access    Public
 exports.createPatient = async (req, res, next) => {
   var newpatient = new Patient({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    name: req.body.name,
     phone: req.body.phone,
     email: req.body.email,
   });

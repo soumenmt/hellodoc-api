@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
 
 const PatientSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    required: [true, "Please add a firstname"],
-    trim: true,
-    maxlength: [50, "Name can not be more than 50 characters"],
-  },
-  lastname: {
+  name: {
     type: String,
     required: [true, "Please add a lastname"],
     trim: true,
