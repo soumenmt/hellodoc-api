@@ -60,6 +60,7 @@ exports.updateOnePatientById = async (req, res, next) => {
 // @route     POST /api/v1/patients
 // @access    Public
 exports.createPatient = async (req, res, next) => {
+  console.log("new patient req", req.body);
   var newpatient = new Patient({
     name: req.body.name,
     phone: req.body.phone,

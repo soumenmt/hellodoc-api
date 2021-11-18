@@ -13,10 +13,10 @@ const AppointmentSchema = new mongoose.Schema({
     type: Date,
   },
   start_time: {
-    type: Number,
+    type: String,
   },
   end_time: {
-    type: Number,
+    type: String,
   },
 });
 

@@ -11,20 +11,32 @@ const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const cors = require("cors");
+const twilio = require("twilio");
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
 
 // Connect to database
 const connectDB = async () => {
-  const conn = await mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  console.log("inside", process.env.MONGO_URI);
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-  console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (err) {
+    console.log(err);
+  }
 };
 connectDB();
+
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
+
+const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 //Route Files
 const doctors = require("./routes/doctors");
@@ -60,6 +72,27 @@ app.use(hpp());
 
 // Enable CORS
 app.use(cors());
+
+//call twilio api for sending message
+
+app.post("/api/messages", (req, res) => {
+  console.log(req.body);
+  res.header("Content-Type", "application/json");
+  client.messages
+    .create({
+      from: `${TWILIO_PHONE_NUMBER}`,
+      to: req.body.to,
+      body: req.body.message,
+    })
+    .then((message) => {
+      console.log(message.body);
+      res.send(JSON.stringify({ success: true }));
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(JSON.stringify({ success: false }));
+    });
+});
 
 //Dev logging middleware
 if (process.env.NODE_ENV === "development") {
