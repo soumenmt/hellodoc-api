@@ -18,6 +18,10 @@ const AppointmentSchema = new mongoose.Schema({
   end_time: {
     type: String,
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Appointment", AppointmentSchema);

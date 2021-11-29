@@ -13,6 +13,10 @@ const SlotsSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Slots", SlotsSchema);

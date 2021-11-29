@@ -46,6 +46,7 @@ const doctoravailiabilities = require("./routes/doctor_office_avaliability");
 const appointments = require("./routes/appointment");
 const slots = require("./routes/slots");
 const patientappointment = require("./routes/createpatientappointment");
+const user = require("./routes/user");
 
 const app = express();
 
@@ -99,6 +100,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
+
 //app.use(logger);
 
 app.use("/api/v1/doctors", doctors);
@@ -108,6 +111,7 @@ app.use("/api/v1/doctoravailiabilities", doctoravailiabilities);
 app.use("/api/v1/appointments", appointments);
 app.use("/api/v1/slots", slots);
 app.use("/api/v1/patientappointment", patientappointment);
+app.use("/api/v1/users", user);
 
 app.use(errorHandler);
 

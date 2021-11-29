@@ -35,6 +35,17 @@ exports.findDoctorById = async (req, res, next) => {
 // @access    Public
 exports.updateOneDoctorById = async (req, res, next) => {
   try {
+    const file = req.file;
+    let imagepath;
+
+    if (file) {
+      const fileName = file.filename;
+      const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+      imagepath = `${basePath}${fileName}`;
+      req.body.image = imagepath;
+    }
+
+    console.log("request", req.body);
     const doctor = await Doctor.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -55,6 +66,14 @@ exports.updateOneDoctorById = async (req, res, next) => {
 // @route     POST /api/v1/doctors
 // @access    Public
 exports.createDoctor = async (req, res, next) => {
+  const file = req.file;
+  //if (!file) return res.status(400).send('No image in the request');
+  const fileName = file.filename;
+  console.log("filename", fileName);
+  console.log("request", req.body);
+
+  const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+
   var newdoctor = new Doctor({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -62,6 +81,7 @@ exports.createDoctor = async (req, res, next) => {
     address: req.body.address,
     qualification: req.body.qualification,
     specialities: req.body.specialities,
+    image: `${basePath}${fileName}`,
   });
   try {
     const doctor = await newdoctor.save();

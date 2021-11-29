@@ -17,6 +17,10 @@ const Doctor_Office_Availiability_Schema = new mongoose.Schema({
   end_time: {
     type: Number,
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 Doctor_Office_Availiability_Schema.virtual("availSlots", {

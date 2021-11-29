@@ -44,9 +44,13 @@ const DoctorSchema = new mongoose.Schema({
   specialities: {
     type: String,
   },
-  photo: {
+  image: {
     type: String,
-    default: "no-photo.jpg",
+    default: "",
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
   },
 });
 

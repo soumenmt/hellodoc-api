@@ -18,6 +18,10 @@ const PatientSchema = new mongoose.Schema({
       "Please add a valid email",
     ],
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Patient", PatientSchema);
