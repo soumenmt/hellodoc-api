@@ -62,6 +62,7 @@ exports.createSlot = async (req, res, next) => {
     doctorofficeavailiability: req.body.doctorofficeavailiability,
     slottime: req.body.slottime,
     slotstatus: req.body.slotstatus,
+    slotOrder: req.body.slotorder,
   });
   try {
     const slot = await newslot.save();
