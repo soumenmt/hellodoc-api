@@ -5,14 +5,7 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/slots
 // @access    Public
 exports.getSlots = async (req, res, next) => {
-  try {
-    const slots = await Slot.find();
-    res.status(200).json({ success: true, count: slots.length, data: slots });
-  } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
-  }
+  res.status(200).json(res.advancedResults);
 };
 // @desc      Get slot profile based on their id
 // @route     GET /api/v1/slots/:id

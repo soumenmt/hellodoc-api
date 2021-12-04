@@ -6,10 +6,11 @@ const {
   createSlot,
   deleteSlotById,
 } = require("../controllers/slots");
+const Slot = require("../models/Slots");
 
 const router = express.Router();
 
-router.route("/").get(getSlots).post(createSlot);
+router.route("/").get(advancedResults(Slot), getSlots).post(createSlot);
 
 router
   .route("/:id")
