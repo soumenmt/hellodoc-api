@@ -9,6 +9,7 @@ const {
 const Slot = require("../models/Slots");
 
 const router = express.Router();
+const advancedResults = require("../middleware/advancedResults");
 
 router.route("/").get(advancedResults(Slot), getSlots).post(createSlot);
 
