@@ -108,7 +108,11 @@ exports.userLogin = async (req, res, next) => {
     return res.status(400).send("The user not found");
   }
   if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
-    const token = jwt.sign({ userId: user._id }, secret, { expiresIn: "1d" });
+    const token = jwt.sign(
+      { userId: user._id, isAdmin: user.isAdmin },
+      secret,
+      { expiresIn: "1d" }
+    );
     console.log("token", token);
     res.status(200).send({ user: user.email, token: token });
   } else {
