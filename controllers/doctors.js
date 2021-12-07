@@ -67,33 +67,6 @@ exports.updateOneDoctorById = async (req, res, next) => {
 // @access    Public
 exports.createDoctor = async (req, res, next) => {
   console.log("doctor profile creation request", req.body);
-  // const file = req.file;
-  // console.log("file", file);
-  //const imageurl = "";
-  // if (file != "undefined") {
-  //   const fileName = file.filename;
-  //   console.log("filename", fileName);
-  //   console.log("request", req.body);
-  //   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
-  //   // const data = new FormData();
-  //   // data.append('file', image);
-  //   // data.append('upload_preset', 'hellodoc');
-  //   // data.append("cloud_name", "dmewwcjro");
-  //   // fetch("https://api.cloudinary.com/v1_1/dmewwcjro/image/upload", {
-  //   //   method: "post",
-  //   //   body: data
-  //   // }).then(res => res.json()).
-  //   //   then(data => {
-  //   //     console.log('data',data);
-  //   //     setImage(data.secure_url);
-  //   //   }).catch(err => {
-  //   //     console.log("An Error Occured While Uploading");
-  //   //   })
-
-  //   imageurl = `${basePath}${fileName}`;
-  // } else {
-  //   imageurl = req.body.image;
-  // }
 
   var newdoctor = new Doctor({
     firstname: req.body.firstname,

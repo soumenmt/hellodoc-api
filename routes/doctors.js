@@ -45,10 +45,6 @@ router
   .post(createDoctor);
 
 router
-  .route("/createprofile")
-  .post(uploadOptions.single("image"), createDoctor);
-
-router
   .route("/:id")
   .get(findDoctorById)
   .put(uploadOptions.single("image"), updateOneDoctorById)
