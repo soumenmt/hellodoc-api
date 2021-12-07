@@ -42,7 +42,7 @@ const advancedResults = require("../middleware/advancedResults");
 router
   .route("/")
   .get(advancedResults(Doctor, "doctorOffices"), getDoctors)
-  .post(uploadOptions.single("image"), createDoctor);
+  .post(createDoctor);
 
 router
   .route("/:id")
