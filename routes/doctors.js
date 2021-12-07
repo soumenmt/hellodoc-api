@@ -42,6 +42,9 @@ const advancedResults = require("../middleware/advancedResults");
 router
   .route("/")
   .get(advancedResults(Doctor, "doctorOffices"), getDoctors)
+  .post(createDoctor);
+router
+  .route("/createprofile")
   .post(uploadOptions.single("image"), createDoctor);
 
 router

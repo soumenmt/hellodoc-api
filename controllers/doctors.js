@@ -66,13 +66,34 @@ exports.updateOneDoctorById = async (req, res, next) => {
 // @route     POST /api/v1/doctors
 // @access    Public
 exports.createDoctor = async (req, res, next) => {
-  const file = req.file;
-  //if (!file) return res.status(400).send('No image in the request');
-  const fileName = file.filename;
-  console.log("filename", fileName);
-  console.log("request", req.body);
+  console.log("doctor profile creation request", req.body);
+  // const file = req.file;
+  // console.log("file", file);
+  //const imageurl = "";
+  // if (file != "undefined") {
+  //   const fileName = file.filename;
+  //   console.log("filename", fileName);
+  //   console.log("request", req.body);
+  //   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+  //   // const data = new FormData();
+  //   // data.append('file', image);
+  //   // data.append('upload_preset', 'hellodoc');
+  //   // data.append("cloud_name", "dmewwcjro");
+  //   // fetch("https://api.cloudinary.com/v1_1/dmewwcjro/image/upload", {
+  //   //   method: "post",
+  //   //   body: data
+  //   // }).then(res => res.json()).
+  //   //   then(data => {
+  //   //     console.log('data',data);
+  //   //     setImage(data.secure_url);
+  //   //   }).catch(err => {
+  //   //     console.log("An Error Occured While Uploading");
+  //   //   })
 
-  const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+  //   imageurl = `${basePath}${fileName}`;
+  // } else {
+  //   imageurl = req.body.image;
+  // }
 
   var newdoctor = new Doctor({
     firstname: req.body.firstname,
@@ -81,7 +102,7 @@ exports.createDoctor = async (req, res, next) => {
     address: req.body.address,
     qualification: req.body.qualification,
     specialities: req.body.specialities,
-    image: `${basePath}${fileName}`,
+    image: req.body.image,
   });
   try {
     const doctor = await newdoctor.save();
@@ -91,6 +112,7 @@ exports.createDoctor = async (req, res, next) => {
       data: doctor,
     });
   } catch (err) {
+    console.log("err", err);
     res.status(400).json({
       success: false,
     });
