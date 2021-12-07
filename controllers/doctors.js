@@ -66,12 +66,14 @@ exports.updateOneDoctorById = async (req, res, next) => {
 // @route     POST /api/v1/doctors
 // @access    Public
 exports.createDoctor = async (req, res, next) => {
+  console.log(" doctor profile request", req.body);
+
   console.log("req ", req);
   const file = req.file;
   //if (!file) return res.status(400).send('No image in the request');
   const fileName = file.filename;
   console.log("filename", fileName);
-  console.log("request", req.body);
+  //console.log("request", req.body);
 
   const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
 
