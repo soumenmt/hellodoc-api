@@ -5,16 +5,7 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/reviews
 // @access    Public
 exports.getReviews = async (req, res, next) => {
-  try {
-    const reviews = await Review.find();
-    res
-      .status(200)
-      .json({ success: true, count: reviews.length, data: reviews });
-  } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
-  }
+  res.status(200).json(res.advancedResults);
 };
 // @desc      Get reviews profile based on their id
 // @route     GET /api/v1/reviews/:id

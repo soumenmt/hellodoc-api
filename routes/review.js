@@ -6,10 +6,12 @@ const {
   createReview,
   deleteReviewById,
 } = require("../controllers/review");
+const Review = require("../models/Review");
 
 const router = express.Router();
+const advancedResults = require("../middleware/advancedResults");
 
-router.route("/").get(getReviews).post(createReview);
+router.route("/").get(advancedResults(Review), getReviews).post(createReview);
 
 router
   .route("/:id")
