@@ -44,7 +44,7 @@ const DoctorSchema = new mongoose.Schema({
   specialities: {
     type: String,
   },
-  doctor_recommended_percent: {
+  recommendation_count: {
     type: Number,
   },
   review_count: {
