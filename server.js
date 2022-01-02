@@ -48,6 +48,7 @@ const slots = require("./routes/slots");
 const patientappointment = require("./routes/createpatientappointment");
 const user = require("./routes/user");
 const review = require("./routes/review");
+const specialities = require("./routes/specialities");
 
 const app = express();
 
@@ -114,6 +115,7 @@ app.use("/api/v1/slots", slots);
 app.use("/api/v1/patientappointment", patientappointment);
 app.use("/api/v1/users", user);
 app.use("/api/v1/reviews", review);
+app.use("/api/v1/specialities", specialities);
 
 app.use(errorHandler);
 
