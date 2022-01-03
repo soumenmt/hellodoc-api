@@ -1,4 +1,6 @@
 const Specialities = require("../models/Specialities");
+const Speciality_Item = require("../models/Speciality_Item");
+
 const ErrorResponse = require("../utils/errorResponse");
 
 // @desc      Get all specialities
@@ -12,7 +14,9 @@ exports.getSpecialities = async (req, res, next) => {
 // @access    Public
 exports.findSpecialitiesById = async (req, res, next) => {
   try {
-    const speciality = await Specialities.findById(req.params.id);
+    const speciality = await Specialities.findById(req.params.id).populate(
+      "specialities"
+    );
     if (!speciality) {
       return next(
         new ErrorResponse(
@@ -58,17 +62,32 @@ exports.updateSpecialitiesById = async (req, res, next) => {
 // @route     POST /api/v1/specialities
 // @access    Public
 exports.createSpecialities = async (req, res, next) => {
-  console.log("new speciality req", req.body);
-  var newspeciality = new Specialities({
+  const specialityItemsIds = Promise.all(
+    req.body.specialities.map(async (specialityItem) => {
+      let newSpecialityItem = new Speciality_Item({
+        name: specialityItem.name,
+        id: specialityItem.id,
+        checked: specialityItem.checked,
+      });
+
+      newSpecialityItem = await newSpecialityItem.save();
+
+      return newSpecialityItem._id;
+    })
+  );
+
+  const specialityItemsIdsResolved = await specialityItemsIds;
+
+  let newspecialities = new Specialities({
     doctor: req.body.doctor,
-    specialities: req.body.specialities,
+    specialities: specialityItemsIdsResolved,
   });
   try {
-    const speciality = await newspeciality.save();
+    const specialities = await newspecialities.save();
 
     res.status(201).json({
       success: true,
-      data: speciality,
+      data: specialities,
     });
   } catch (err) {
     res.status(400).json({

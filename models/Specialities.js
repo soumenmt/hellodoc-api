@@ -1,21 +1,23 @@
 const mongoose = require("mongoose");
-
-const SpecialitySchema = new mongoose.Schema(
-  { name: String },
-  { id: String },
-  { checked: Boolean }
-);
-
 const SpecialitiesSchema = new mongoose.Schema({
   doctor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Doctor",
   },
-  specialities: [SpecialitySchema],
+  specialities: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Speciality_Item",
+    },
+  ],
   dateCreated: {
     type: Date,
     default: Date.now,
   },
+});
+
+SpecialitiesSchema.set("toJSON", {
+  virtuals: true,
 });
 
 module.exports = mongoose.model("Specialities", SpecialitiesSchema);

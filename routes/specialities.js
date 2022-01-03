@@ -13,7 +13,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(advancedResults(Specialities), getSpecialities)
+  .get(advancedResults(Specialities, "specialities"), getSpecialities)
   .post(createSpecialities);
 
 router
