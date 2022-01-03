@@ -15,7 +15,10 @@ exports.getSpecialities = async (req, res, next) => {
 exports.findSpecialitiesById = async (req, res, next) => {
   try {
     const speciality = await Specialities.findById(req.params.id).populate(
-      "specialities"
+      "specialities",
+      "name",
+      "id",
+      "checked"
     );
     if (!speciality) {
       return next(
@@ -62,15 +65,18 @@ exports.updateSpecialitiesById = async (req, res, next) => {
 // @route     POST /api/v1/specialities
 // @access    Public
 exports.createSpecialities = async (req, res, next) => {
+  console.log("req.body.specialities", req.body.specialities);
+  let spls = JSON.parse(req.body.specialities);
   const specialityItemsIds = Promise.all(
-    req.body.specialities.map(async (specialityItem) => {
+    spls.map(async (specialityItem) => {
       let newSpecialityItem = new Speciality_Item({
         name: specialityItem.name,
         id: specialityItem.id,
         checked: specialityItem.checked,
       });
-
+      console.log("before save newSpecialityItem", newSpecialityItem);
       newSpecialityItem = await newSpecialityItem.save();
+      console.log("after save newSpecialityItem", newSpecialityItem);
 
       return newSpecialityItem._id;
     })
