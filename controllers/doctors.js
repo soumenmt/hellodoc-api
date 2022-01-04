@@ -82,7 +82,7 @@ exports.createDoctor = async (req, res, next) => {
     middlename: req.body.middlename,
     lastname: req.body.lastname,
     about: req.body.about,
-    city: req.body.city,
+    address: req.body.address,
     registration_details: req.body.registration_details,
     qualification: req.body.qualification,
     specialities: req.body.specialities,

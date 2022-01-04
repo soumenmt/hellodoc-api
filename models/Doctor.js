@@ -40,7 +40,7 @@ const DoctorSchema = new mongoose.Schema({
       "Please add a valid email",
     ],
   },
-  city: {
+  address: {
     type: String,
   },
   qualification: {
