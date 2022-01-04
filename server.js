@@ -49,6 +49,7 @@ const patientappointment = require("./routes/createpatientappointment");
 const user = require("./routes/user");
 const review = require("./routes/review");
 const specialities = require("./routes/specialities");
+const qualifications = require("./routes/qualifications");
 const refdatas = require("./routes/refdata");
 
 const app = express();
@@ -117,6 +118,7 @@ app.use("/api/v1/patientappointment", patientappointment);
 app.use("/api/v1/users", user);
 app.use("/api/v1/reviews", review);
 app.use("/api/v1/specialities", specialities);
+app.use("/api/v1/qualifications", qualifications);
 app.use("/api/v1/refdatas", refdatas);
 
 app.use(errorHandler);
