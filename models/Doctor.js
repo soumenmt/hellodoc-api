@@ -7,6 +7,9 @@ const DoctorSchema = new mongoose.Schema({
     trim: true,
     maxlength: [50, "Name can not be more than 50 characters"],
   },
+  middlename: {
+    type: String,
+  },
   lastname: {
     type: String,
     required: [true, "Please add a lastname"],
@@ -15,7 +18,9 @@ const DoctorSchema = new mongoose.Schema({
   },
   about: {
     type: String,
-    maxlength: [5000, "Description can not be more than 5000 characters"],
+  },
+  registration_details: {
+    type: String,
   },
   website: {
     type: String,
@@ -35,7 +40,7 @@ const DoctorSchema = new mongoose.Schema({
       "Please add a valid email",
     ],
   },
-  address: {
+  city: {
     type: String,
   },
   qualification: {

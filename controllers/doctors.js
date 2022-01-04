@@ -79,9 +79,11 @@ exports.createDoctor = async (req, res, next) => {
 
   var newdoctor = new Doctor({
     firstname: req.body.firstname,
+    middlename: req.body.middlename,
     lastname: req.body.lastname,
     about: req.body.about,
-    address: req.body.address,
+    city: req.body.city,
+    registration_details: req.body.registration_details,
     qualification: req.body.qualification,
     specialities: req.body.specialities,
     image: req.body.image,
