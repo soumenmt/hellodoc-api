@@ -26,6 +26,9 @@ const Doctor_OfficeSchema = new mongoose.Schema({
   full_address: {
     type: String,
   },
+  phone: {
+    type: String,
+  },
   dateCreated: {
     type: Date,
     default: Date.now,

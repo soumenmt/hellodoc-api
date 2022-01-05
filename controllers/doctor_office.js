@@ -71,6 +71,7 @@ exports.createDoctorOffice = async (req, res, next) => {
     state: req.body.state,
     zipcode: req.body.zipcode,
     country: req.body.country,
+    phone: req.body.phone,
   });
   try {
     const doctoroffice = await newdoctoroffice.save();
