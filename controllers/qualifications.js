@@ -65,7 +65,7 @@ exports.updateQualificationsById = async (req, res, next) => {
 // @route     POST /api/v1/Qualifications
 // @access    Public
 exports.createQualifications = async (req, res, next) => {
-  let spls = req.body.qualifications;
+  let spls = JSON.parse(req.body.qualifications);
   const qualificationItemsIds = Promise.all(
     spls.map(async (qualificationItem) => {
       let newqualificationItem = new Qualification_Item({
