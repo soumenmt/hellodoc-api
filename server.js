@@ -51,6 +51,7 @@ const review = require("./routes/review");
 const specialities = require("./routes/specialities");
 const qualifications = require("./routes/qualifications");
 const refdatas = require("./routes/refdata");
+const doccategories = require("./routes/doccategories");
 
 const app = express();
 
@@ -120,6 +121,7 @@ app.use("/api/v1/reviews", review);
 app.use("/api/v1/specialities", specialities);
 app.use("/api/v1/qualifications", qualifications);
 app.use("/api/v1/refdatas", refdatas);
+app.use("/api/v1/doccategories", doccategories);
 
 app.use(errorHandler);
 
