@@ -24,4 +24,8 @@ const AppointmentSchema = new mongoose.Schema({
   },
 });
 
+AppointmentSchema.set("toJSON", {
+  virtuals: true,
+});
+
 module.exports = mongoose.model("Appointment", AppointmentSchema);

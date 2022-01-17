@@ -5,16 +5,18 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/appointments
 // @access    Public
 exports.getAppointment = async (req, res, next) => {
-  try {
-    const appointments = await Appointment.find();
-    res
-      .status(200)
-      .json({ success: true, count: appointments.length, data: appointments });
-  } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
-  }
+  res.status(200).json(res.advancedResults);
+
+  // try {
+  //   const appointments = await Appointment.find();
+  //   res
+  //     .status(200)
+  //     .json({ success: true, count: appointments.length, data: appointments });
+  // } catch (err) {
+  //   res.status(400).json({
+  //     success: false,
+  //   });
+  // }
 };
 // @desc      Get appointment profile based on their id
 // @route     GET /api/v1/appointments/:id
@@ -67,16 +69,18 @@ exports.updateAppointmentById = async (req, res, next) => {
 // @route     POST /api/v1/appointments
 // @access    Public
 exports.createAppointment = async (req, res, next) => {
+  console.log("req body", req.body);
   var newappointment = new Appointment({
-    doctor_office_id: req.body.doctor_office_id,
-    patient_id: req.body.patient_id,
+    doctoroffice: req.body.doctoroffice,
+    patient: req.body.patient,
     appointment_date: req.body.appointment_date,
     start_time: req.body.start_time,
     end_time: req.body.end_time,
   });
+
   try {
     const appointment = await newappointment.save();
-
+    console.log("appointment", appointment);
     res.status(201).json({
       success: true,
       data: appointment,
